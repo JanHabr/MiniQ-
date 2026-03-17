@@ -1,0 +1,5 @@
+func len string
+    var try = restr( string )
+    var len_rtrn = math( len( try ) )
+
+

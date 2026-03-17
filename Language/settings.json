@@ -1,0 +1,60 @@
+{ 
+
+
+
+"highlight.regexes": {
+
+        "(\\bvar\\b|\\bread\\b|\\blist\\b)": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#FF7A7A", "fontWeight": "bold" }
+            ]
+        },
+
+        "\".*?\"": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#FF7A7A" }
+            ]
+        },
+
+        "(\\bprint\\b|\\bloop\\b|\\bimport\\b)": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#FFD97A", "fontWeight": "bold" }
+            ]
+        },
+
+        "(\\bfunc\\b|\\brun\\b|\\bmath\\b|\\brestr\\b|\\binput\\b|\\brewrite\\b|\\bappend\\b)": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#7AD7FF", "fontWeight": "bold" }
+            ]
+        },
+
+        "(\\bquery\\b|\\bwatch\\b)": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#CFA7FF", "fontWeight": "bold" }
+            ]
+        },
+
+        "\\b[0-9]+\\b": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#A8FF9E", "fontWeight": "bold" }
+            ]
+        },
+
+        "(==|!=|<=|>=|<|>|=|\\bin\\b|\\band\\b|\\bor\\b|\\bto\\b)": {
+            "filterFileRegex": "\\.mq$",
+            "decorations": [
+                { "color": "#FFB3D1", "fontWeight": "bold" }
+            ]
+        }
+    }
+
+
+
+
+}

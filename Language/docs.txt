@@ -1,0 +1,470 @@
+|||||||||||||||||||||||||||||||||||||||||||
+######## CODE COLOR SETUP (VSCode) ########
+|||||||||||||||||||||||||||||||||||||||||||
+
+MiniQ files use the .mq extension.
+
+To enable syntax coloring:
+
+1. Install the extension:
+   Highlight (by Fabio Spampinato)
+
+2. Open the command palette:
+
+   Shift + Ctrl + P
+
+3. Select:
+
+   > Preferences: Open User Settings (JSON)
+
+4. Add the lines found in settings.json
+
+5. Reload VS Code:
+
+   Shift + Ctrl + P
+   > Developer: Reload Window
+
+Now the code should be colored.
+
+
+
+||||||||||||||||||||||||||||||||||||
+######## FUNDAMENTAL DOCS ##########
+||||||||||||||||||||||||||||||||||||
+
+# MINIQ LANGUAGE DOCUMENTATION
+
+MiniQ is a simple scripting language designed for quick automation,
+file manipulation, and reactive programming through watchers.
+
+
+
+-----------------------------------
+CODE BLOCKS / INDENTATION
+-----------------------------------
+
+MiniQ uses indentation to define blocks of code.
+
+Example:
+
+query age >= 18
+    print "adult"
+
+The indented lines belong to the query block.
+
+
+
+-----------------------------------
+1 – VARIABLES (var)
+-----------------------------------
+
+description:
+Creates or updates a variable in the program environment.
+
+syntax:
+var name = value
+
+arguments:
+name  -> variable name
+value -> number, string, variable, input, or math expression
+
+returned output:
+none
+
+example use:
+
+var age = 10
+print age
+
+prints ->
+10
+
+
+
+-----------------------------------
+2 – PRINT (print)
+-----------------------------------
+
+description:
+Prints a value to the console.
+
+syntax:
+print value
+
+arguments:
+value -> variable, string, or expression
+
+example use:
+
+var name = "Alex"
+print name
+
+prints ->
+Alex
+
+
+
+-----------------------------------
+3 – USER INPUT (input)
+-----------------------------------
+
+description:
+Reads user input from the console.
+
+syntax:
+var variable = input
+
+arguments:
+none
+
+returned output:
+The entered text is stored in the variable.
+
+example use:
+
+var name = input
+print name
+
+example session:
+
+> Sam
+Sam
+
+
+
+-----------------------------------
+4 – MATH EXPRESSIONS (math)
+-----------------------------------
+
+description:
+Evaluates a mathematical expression.
+
+syntax:
+math(expression)
+
+arguments:
+expression -> mathematical expression
+
+returned output:
+The result of the expression.
+
+example use:
+
+var result = math(5 + 3)
+print result
+
+prints ->
+8
+
+
+
+-----------------------------------
+5 – CONDITIONS (query)
+-----------------------------------
+
+description:
+Runs a block of code if a condition is true.
+
+syntax:
+
+query condition
+    code
+
+operators:
+
+==
+!=
+>
+<
+>=
+<=
+in
+
+example use:
+
+var age = 20
+
+query age >= 18
+    print "adult"
+
+prints ->
+adult
+
+
+
+-----------------------------------
+6 – LOGICAL OPERATORS
+-----------------------------------
+
+description:
+Logical operators combine conditions.
+
+operators:
+
+and
+or
+
+example use:
+
+var age = 20
+var citizen = "yes"
+
+query age >= 18 and citizen == "yes"
+    print "can vote"
+
+prints ->
+can vote
+
+
+
+-----------------------------------
+7 – LOOPS (loop)
+-----------------------------------
+
+description:
+Repeats a block while a condition is true.
+
+syntax:
+
+loop condition
+    code
+
+example use:
+
+var i = 0
+
+loop i != 3
+    print i
+    var i = math(i + 1)
+
+prints ->
+0
+1
+2
+
+
+
+-----------------------------------
+8 – WATCHERS (watch)
+-----------------------------------
+
+description:
+A watch block runs automatically when its condition becomes true.
+
+The condition is checked every time the program environment changes
+(for example when a variable is updated).
+
+syntax:
+
+watch condition
+    code
+
+example use:
+
+var count = 0
+
+watch count == 3
+    print "done"
+
+loop count != 5
+    var count = math(count + 1)
+
+prints ->
+done
+
+
+
+-----------------------------------
+9 – FUNCTIONS (func)
+-----------------------------------
+
+description:
+Defines reusable blocks of code.
+
+syntax:
+
+func function_name arguments
+    code
+
+arguments:
+function_name -> name of the function
+arguments     -> variables passed when running the function
+
+example use:
+
+func greet name
+    print name
+
+
+
+-----------------------------------
+10 – RUNNING FUNCTIONS (run)
+-----------------------------------
+
+description:
+Executes a function.
+
+syntax:
+
+run function_name argument=value
+
+arguments:
+function_name  -> function to execute
+argument=value -> value passed to the function
+
+example use:
+
+func greet name
+    print name
+
+run greet name="Alex"
+
+prints ->
+Alex
+
+
+
+-----------------------------------
+11 – FUNCTION RETURN VALUES
+-----------------------------------
+
+description:
+Functions return values by assigning a variable named:
+
+function_name_rtrn
+
+example use:
+
+func add a b
+    var add_rtrn = math(a + b)
+
+run add a=5 b=7
+print add_rtrn
+
+prints ->
+12
+
+Note:
+Built-in functions follow this naming convention, but it is not required. 
+Any variable name can be used to return values, though the syntax above is recommended.
+
+
+-----------------------------------
+12 – FILE WRITING (rewrite)
+-----------------------------------
+
+description:
+Replaces the contents of a file.
+
+syntax:
+
+rewrite "file" to value
+
+arguments:
+file  -> file path
+value -> content written to the file
+
+example use:
+
+rewrite "test.txt" to "hello"
+
+file contents ->
+hello
+
+
+
+-----------------------------------
+13 – FILE APPENDING (append)
+-----------------------------------
+
+description:
+Adds content to the end of a file.
+
+syntax:
+
+append value to "file"
+
+example use:
+
+append "hello" to "log.txt"
+append "world" to "log.txt"
+
+file contents ->
+hello
+world
+
+
+
+-----------------------------------
+14 – FILE READING (read)
+-----------------------------------
+
+description:
+Reads the contents of a file into a variable.
+
+syntax:
+
+read "file" to variable
+
+arguments:
+file     -> file path
+variable -> destination variable
+
+example use:
+
+read "test.txt" to data
+print data
+
+
+
+-----------------------------------
+15 – IMPORTING FILES (import)
+-----------------------------------
+
+description:
+Loads and executes another .mq file.
+
+syntax:
+
+import filename
+
+arguments:
+filename -> file name without ".mq"
+
+example use:
+
+import utils
+
+this loads ->
+utils.mq
+
+
+
+|||||||||||||||||||||||||||||||||
+######## BUILT-IN FUNCTIONS #####
+|||||||||||||||||||||||||||||||||
+
+
+
+-----------------------------------
+1 – len
+-----------------------------------
+
+description:
+Returns the length of a string.
+
+arguments:
+string -> string you want the length of
+
+returned output:
+Stored in variable:
+
+len_rtrn
+
+example use:
+
+run len string="Hello"
+print len_rtrn
+
+prints ->
+5
