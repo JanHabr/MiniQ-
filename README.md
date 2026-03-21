@@ -30,32 +30,6 @@ to react to changes in the program environment automatically.
 
 
 ------------------------------------------------
-Example MiniQ program
-------------------------------------------------
-
-var count = 0
-
-watch count == 5
-    print "Reached five!"
-
-loop count != 6
-    print count
-    var count = math(count + 1)
-
-
-Output:
-
-0
-1
-2
-3
-4
-Reached five!
-5
-
-
-
-------------------------------------------------
 Typical uses
 ------------------------------------------------
 
@@ -71,42 +45,10 @@ MiniQ works well for:
 
 
 ------------------------------------------------
-Project structure
+Running MiniQ 
 ------------------------------------------------
 
-A simple MiniQ project might look like this:
-
-main.mq
-utils.mq
-logs.txt
-
-
-
-Example:
-
-main.mq
-
-import utils
-
-run start
-
-
-
-utils.mq
-
-func start
-    print "MiniQ program started"
-
-
-
-------------------------------------------------
-Running MiniQ
-------------------------------------------------
-
-Run a MiniQ file using the interpreter:
-
-miniq program.mq
-
+To run .mq code in one of your projects simply import the MiniQ library and do MiniQ(file_path)!
 
 
 ------------------------------------------------
@@ -157,3 +99,7 @@ Status
 MiniQ is an experimental scripting language and is still evolving.
 
 Features and syntax may change as the language grows.
+
+----------------
+ENJOY! :)
+----------------
