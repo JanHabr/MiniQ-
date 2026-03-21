@@ -532,5 +532,3 @@ class MiniQ:
         self.run(parsed)
 
 
-with open("main.mq") as file:
-    MiniQ(file.read())
